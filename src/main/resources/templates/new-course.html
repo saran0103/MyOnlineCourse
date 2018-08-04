@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+
+    <form th:object="${courseForm}" method="post">
+
+        <div class="form-group">
+            <label th:for="name">Name</label>
+            <input th:field="*{name}" />
+            <div th:errors="*{name}"></div>
+        </div>
+
+        <div class="form-group">
+            <label th:for="languageId">Language</label>
+            <select th:field="*{languageId}">
+                <option th:each="language : *{languages}"
+                        th:value="${language.id}"
+                        th:text="${language.value}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label th:for="titleId">Title</label>
+            <select th:field="*{titleId}">
+                <option th:each="title : *{titles}"
+                        th:value="${title.id}"
+                        th:text="${title.value}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label th:for="materialsId">Materials</label>
+            <select th:field="*{materialsId}">
+                <option th:each="material : *{materials}"
+                        th:value="${material.id}"
+                        th:text="${material.value}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label th:for="courseTypeId">Course Type</label>
+            <select th:field="*{courseTypeId}">
+                <option th:each="courseType : *{courseTypes}"
+                        th:value="${courseType.id}"
+                        th:text="${courseType.value}"></option>
+            </select>
+        </div>
+
+        <input type="submit" value="Add Course" />
+    </form>
+
+</div>
+
+</body>
+</html>

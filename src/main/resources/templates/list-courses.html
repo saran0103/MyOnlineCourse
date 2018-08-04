@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+
+    <div th:unless="${courses} and ${courses.size()}">
+        <h2>No Results</h2>
+    </div>
+
+    <div th:fragment="courses-list">
+        <div th:if="${courses} and ${courses.size()}">
+
+            <h3 th:text="${courses.size() + ' Result(s)'}"></h3>
+
+            <div  th:each="course : ${courses}">
+                <table  th:fragment="single-course" class="course-listing">
+                    <tr>
+                        <th>Name</th>
+                        <td th:text="${course.name}"></td>
+                    </tr>
+                    <tr>
+                        <th>Language</th>
+                        <td th:text="${course.language}"></td>
+                    </tr>
+                    <tr>
+                        <th>Title</th>
+                        <td th:text="${course.title}"></td>
+                    </tr>
+                    <tr>
+                        <th>Material</th>
+                        <td th:text="${course.material}"></td>
+                    </tr>
+                    <tr>
+                        <th>Course Type</th>
+                        <td th:text="${course.coursetype}"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+
+<head th:fragment="head">
+
+    <!-- Bootstrap stylesheets and script -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
+    <link th:href="@{/css/innerouter.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+
+    <title th:text="'My Online Course' + ${title == null ? '' : ' :: ' + title}">My Online Course</title>
+</head>
+
+<body>
+
+<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a th:href="@{/}" class="navbar-brand">My Online Course</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/list}">Open Source</a></li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a th:href="@{/login}">Login</a></li>
+                    <li><a th:href="@{/signup}">SignUp</a></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="outer">
+    <h2>SignUp</h2>
+    <div id="inner">
+        <form th:action="@{/signup}" th:object="${signupForm}" method="post">
+            <table>
+                <tr>
+                    <th><label for="username">Enter Username</label></th>
+                    <th><input type="text" id="username" name="username" autofocus="autofocus"/></th>
+                </tr>
+                <tr>
+                    <th><label for="password">Enter Password</label></th>
+                    <th><input type="password" id="password" name="password" /></th>
+                </tr>
+                <tr>
+                    <th><label for="re_password">Reenter Password</label></th>
+                    <th><input type="password" id="re_password" name="re_password" /></th>
+                </tr>
+                <tr>
+                    <th><input type="submit" value="Sign Up"/></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

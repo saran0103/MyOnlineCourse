@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+    <div th:replace="fragments :: page-header"></div>
+
+    <div class="container body-content">
+        <h1>My Online Course</h1>
+
+        <p>Welcome to your study guide</p>
+        <ul>
+            <li><a th:href="@{/login}">Mentor</a></li>
+            <li><a th:href="@{/login}">Student</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
